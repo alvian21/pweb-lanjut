@@ -379,27 +379,27 @@
         }
 
         function savedata() {
-            var kodetr = 'trj' + '<?php echo date("Ymd").date("His") ?>';
+            var kodetr = 'trb' + '<?php echo date("Ymd").date("His") ?>';
             var tanggal = $("#tanggal").val();
-            var namakonsumen = $("#namakonsumen").val();
-            var telpon = $("#telp").val();
+            var supplier = $("#supplier").val();
+            var karyawan = $("#karyawan").val();
             var keterangan = $("#keterangan").val();
             var grandtotal = $("#grandtotal").val();
             console.log(kodetr);
             console.log(tanggal);
-            console.log(namakonsumen);
-            console.log(telpon);
+            console.log(supplier);
+            console.log(karyawan);
             console.log(keterangan);
             console.log(grandtotal);
 
 
-            $.get('http://127.0.0.1:8000/transaksimaster/' + kodetr + '/' + tanggal + '/' + namakonsumen + '/' +
-                telpon + '/' + keterangan + '/' + grandtotal + '',
+            $.get('http://127.0.0.1:8000/transaksimasterbeli/' + kodetr + '/' + tanggal + '/' + supplier + '/' +
+                karyawan + '/' + grandtotal + '',
                 function () {
 
                 });
-            console.log('http://127.0.0.1:8000/transaksimaster/' + kodetr + '/' + tanggal + '/' + namakonsumen + '/' +
-                telpon + '/' + keterangan + '/' + grandtotal);
+            console.log('http://127.0.0.1:8000/transaksimasterbeli/' + kodetr + '/' + tanggal + '/' + supplier + '/' +
+                karyawan + '/' + grandtotal);
 
             $('#myTableisi tr').each(function () {
                 var kode = $('td', this).eq(0).text();
@@ -409,9 +409,6 @@
                 var diskon = $('td', this).eq(4).text();
                 var jumlah = $('td', this).eq(5).text();
 
-
-
-
                 if (kode != "") {
                     console.log(kode);
                     console.log(nama);
@@ -419,18 +416,18 @@
                     console.log(harga);
                     console.log(diskon);
                     console.log(jumlah);
-                    $.get('http://127.0.0.1:8000/transaksidetail/' + kodetr + '/' + kode + '/' + harga + '/' +
+                    $.get('http://127.0.0.1:8000/transaksidetailbeli/' + kodetr + '/' + kode + '/' + harga + '/' +
                         diskon + '/' + jumlah,
                         function () {});
 
-                    console.log('http://127.0.0.1:8000/transaksidetail/' + kodetr + '/' + kode + '/' + nama +
+                    console.log('http://127.0.0.1:8000/transaksidetailbeli/' + kodetr + '/' + kode + '/' + nama +
                         '/' + satuan + '/' + harga + '/' + diskon + '/' + jumlah)
                 }
 
             });
 
 
-            window.location = "http://127.0.0.1:8000/penjualan";
+            window.location = "http://127.0.0.1:8000/pembelian";
         }
 
     </script>

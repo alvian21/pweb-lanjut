@@ -53,7 +53,7 @@ class AnggotaModel extends Model
         DB::table('detailbeli')->insert([
             'trb' => $kodetr,
             'kodebr' => $kode,
-            'hargajual' => $harga,
+            'hargabeli' => $harga,
             'jumlah' => $jumlah,
             'diskon' => $diskon
         ]);

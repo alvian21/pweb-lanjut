@@ -45,10 +45,15 @@ Route::get('karyawan/hapus/{idkar}',[Controller::class,'hapuskaryawan']);
 
 
 Route::get('penjualan',[Controller::class,'readpenjualan']);
+Route::get('penjualan/caripenjualan/{cari}',[Controller::class,'caripenjualan']);
 Route::get('penjualan/{trj}',[Controller::class,'detailpenjualan']);
 Route::get('/transaksi/penjualan',[Controller::class,'transaksi']);
 Route::get('transaksimaster/{kodetr}/{tanggal}/{nama}/{telp}/{Keterangan}/{grandtotal}',[Controller::class,'transaksimasterjual']);
 Route::get('transaksidetail/{kodetr}/{kode}/{harga}/{diskon}/{jumlah}',[Controller::class,'transaksidetailjual']);
 
 Route::get('pembelian',[Controller::class,'readpembelian']);
+Route::get('pembelian/caripembelian/{cari}',[Controller::class,'caripembelian']);
+Route::get('pembelian/{trj}',[Controller::class,'detailpembelian']);
 Route::get('/transaksi/pembelian',[Controller::class,'transaksipembelian']);
+Route::get('transaksimasterbeli/{kodetr}/{tanggal}/{supplier}/{karyawan}/{grandtotal}',[Controller::class,'transaksimasterbeli']);
+Route::get('transaksidetailbeli/{kodetr}/{kode}/{harga}/{diskon}/{jumlah}',[Controller::class,'transaksidetailbeli']);

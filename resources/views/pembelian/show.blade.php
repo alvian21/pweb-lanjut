@@ -30,40 +30,41 @@
             </div>
         </nav>
 
-        <input type="text" name="cari" id="cari" >
-        <button type="submit" class="btn btn-primary" onclick="myCari()">Cari</button>
-        <br>
-        <a href="/transaksi/pembelian" class="btn btn-primary mt-3">Tambah</a>
+
+        <div class="row mt-2">
+            <div class="col-md-12 text-center">
+               <h3> Detail Pembelian</h3>
+            </div>
+        </div>
+
+
         <table border="1" class="table table-striped mt-3">
             <tr>
                 <th>Kode</th>
-                <th>Tanggal</th>
-                <th>Karyawan</th>
-                <th>Supplier</th>
-                <th>Grandtotal</th>
-                <th>Aksi</th>
+                <th>Kode Barang</th>
+                <th>Nama Barang</th>
+                <th>Harga Jual</th>
+                <th>Jumlah</th>
+                <th>Diskon</th>
+                <th>Subtotal</th>
             </tr>
             @foreach ($pembelian as $item)
+            @php
+                $subtotal = ($item->hargabeli * $item->jumlah) - ($item->diskon * $item->hargabeli*$item->jumlah/100);
+            @endphp
             <tr>
                 <td>{{$item->trb}}</td>
-                <td>{{$item->tanggal}}</td>
-                <td>{{$item->nama_karyawan}}</td>
-                <td>{{$item->nama_supplier}}</td>
-                <td>{{$item->grandtotal}}</td>
-                <td>
-                    <a href="/pembelian/{{$item->trb}}" class="btn btn-info">Detail</a>
-                </td>
+                <td>{{$item->kodebr}}</td>
+                <td>{{$item->nama}}</td>
+                <td>{{$item->hargabeli}}</td>
+                <td>{{$item->jumlah}}</td>
+                <td>{{$item->diskon}}%</td>
+                <td>{{$subtotal}}</td>
             </tr>
             @endforeach
         </table>
     </div>
-<script>
-    function myCari() {
-        var cari = document.getElementById('cari').value;
 
-        window.open("http://127.0.0.1:8000/pembelian/caripembelian/"+cari+"");
-    }
-</script>
 </body>
 
 </html>

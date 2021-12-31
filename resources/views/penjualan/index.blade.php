@@ -66,7 +66,7 @@
     function myCari() {
         var cari = document.getElementById('cari').value;
 
-        window.open("http://127.0.0.1:8000/barang/caribarang/"+cari+"");
+        window.open("http://127.0.0.1:8000/penjualan/caripenjualan/"+cari+"");
     }
 </script>
 </body>
