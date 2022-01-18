@@ -36,8 +36,16 @@
                <h3> Detail Penjualan</h3>
             </div>
         </div>
-
-
+        <div class="row">
+            <div class="col-md-12">
+                <h6>Kode Transaksi : {{$penjualan->trj}}</h6>
+                <h6>Tanggal : {{$penjualan->tanggal}}</h6>
+                <h6>Nama Customer : {{$penjualan->namacustomer}}</h6>
+                <h6>Telp Customer : {{$penjualan->telpcustomer}}</h6>
+                <h6>Keterangan : {{$penjualan->keterangan}}</h6>
+                <h6>Grand Total : {{$penjualan->grandtotal}}</h6>
+            </div>
+        </div>
         <table border="1" class="table table-striped mt-3">
             <tr>
                 <th>Kode</th>
@@ -48,7 +56,7 @@
                 <th>Diskon</th>
                 <th>Subtotal</th>
             </tr>
-            @foreach ($penjualan as $item)
+            @foreach ($detail as $item)
             @php
                 $subtotal = ($item->hargajual * $item->jumlah) - ($item->diskon * $item->hargajual*$item->jumlah/100);
             @endphp

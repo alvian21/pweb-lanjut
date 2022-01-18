@@ -264,9 +264,9 @@ class Controller extends BaseController
 
     public function detailpenjualan($trj)
     {
-        $penjualan = DB::table('detailjual')->join('barang','detailjual.kodebr','barang.kodebr')->where('trj', $trj)->get();
-
-        return view('penjualan.show', ['penjualan' => $penjualan]);
+        $detail = DB::table('detailjual')->join('barang', 'detailjual.kodebr', 'barang.kodebr')->where('trj', $trj)->get();
+        $penjualan = DB::table('masterjual')->where('trj', $trj)->first();
+        return view('penjualan.show', ['penjualan' => $penjualan, 'detail' => $detail]);
     }
 
     public function transaksimasterjual($kodetr, $tanggal, $nama, $telp, $Keterangan, $grandtotal)
@@ -283,14 +283,14 @@ class Controller extends BaseController
 
     public function readpembelian()
     {
-        $pembelian = DB::table('masterbeli')->select('supplier.nama as nama_supplier','karyawan.nama as nama_karyawan','masterbeli.*')->join('supplier','supplier.idsup','masterbeli.idsup')->join('karyawan','karyawan.idkar','masterbeli.idkar')->get();
+        $pembelian = DB::table('masterbeli')->select('supplier.nama as nama_supplier', 'karyawan.nama as nama_karyawan', 'masterbeli.*')->join('supplier', 'supplier.idsup', 'masterbeli.idsup')->join('karyawan', 'karyawan.idkar', 'masterbeli.idkar')->get();
 
         return view('pembelian.index', ['pembelian' => $pembelian]);
     }
 
     public function caripembelian($cari)
     {
-        $pembelian = DB::table('masterbeli')->select('supplier.nama as nama_supplier','karyawan.nama as nama_karyawan','masterbeli.*')->join('supplier','supplier.idsup','masterbeli.idsup')->join('karyawan','karyawan.idkar','masterbeli.idkar')->where('masterbeli.trb', $cari)->get();
+        $pembelian = DB::table('masterbeli')->select('supplier.nama as nama_supplier', 'karyawan.nama as nama_karyawan', 'masterbeli.*')->join('supplier', 'supplier.idsup', 'masterbeli.idsup')->join('karyawan', 'karyawan.idkar', 'masterbeli.idkar')->where('masterbeli.trb', $cari)->get();
         return view('pembelian.index', ['pembelian' => $pembelian]);
     }
 
@@ -317,8 +317,8 @@ class Controller extends BaseController
 
     public function detailpembelian($trb)
     {
-        $pembelian = DB::table('detailbeli')->join('barang','detailbeli.kodebr','barang.kodebr')->where('trb', $trb)->get();
-
-        return view('pembelian.show', ['pembelian' => $pembelian]);
+        $detail = DB::table('detailbeli')->join('barang', 'detailbeli.kodebr', 'barang.kodebr')->where('trb', $trb)->get();
+        $pembelian = DB::table('masterbeli')->select('supplier.nama as nama_supplier', 'karyawan.nama as nama_karyawan', 'masterbeli.*')->join('supplier', 'supplier.idsup', 'masterbeli.idsup')->join('karyawan', 'karyawan.idkar', 'masterbeli.idkar')->where('masterbeli.trb', $trb)->first();
+        return view('pembelian.show', ['pembelian' => $pembelian,'detail' => $detail]);
     }
 }

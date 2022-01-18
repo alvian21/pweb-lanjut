@@ -43,7 +43,13 @@
                 <th>Grandtotal</th>
                 <th>Aksi</th>
             </tr>
+            @php
+                $total = 0;
+            @endphp
             @foreach ($pembelian as $item)
+            @php
+                $total += $item->grandtotal;
+            @endphp
             <tr>
                 <td>{{$item->trb}}</td>
                 <td>{{$item->tanggal}}</td>
@@ -55,6 +61,10 @@
                 </td>
             </tr>
             @endforeach
+            <tr>
+                <td colspan="4" class="text-center">Total</td>
+                <td>{{$total}}</td>
+            </tr>
         </table>
     </div>
 <script>

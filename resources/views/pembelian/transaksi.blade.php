@@ -113,15 +113,6 @@
                     </div>
                 </div>
 
-
-
-                <div class="col-sm-1">
-                    <div class="form-group">
-                        <label>Diskon</label>
-                        <input type="number" id="diskon" name="diskon" class="form-control" readonly required="">
-                    </div>
-                </div>
-
                 <div class="col-sm-1">
                     <div class="form-group">
                         <label>Jumlah</label>
@@ -291,7 +282,7 @@
         $("#jumlah").change(function () {
             var harga = parseFloat($("#harga").val()).toFixed(2);
             var jumlah = parseFloat($("#jumlah").val()).toFixed(2);
-            var diskon = parseFloat($("#diskon").val()).toFixed(2);
+            var diskon = 0;
             var totalnya = parseFloat(((100 - diskon) / 100) * jumlah * harga).toFixed(2);
             $("#total").val(totalnya);
 
@@ -309,7 +300,7 @@
             var nama = $("input[name='nama']").val();
             var satuan = $("input[name='satuan']").val();
             var harga = $("input[name='harga']").val();
-            var diskon = $("input[name='diskon']").val();
+            var diskon =0;
             var jumlah = $("input[name='jumlah']").val();
             var total = $("input[name='total']").val();
             $(".data-table tbody").append("<tr data-kode='" + kode + "' data-nama='" + nama +
@@ -337,7 +328,7 @@
             var nama1 = currentRow.find("td:eq(1)").html();
             var satuan1 = currentRow.find("td:eq(2)").html();
             var harga1 = currentRow.find("td:eq(3)").html();
-            var diskon1 = currentRow.find("td:eq(4)").html();
+            var diskon1 = 0;
             $("#kode").val(kode1);
             $("#kode").val(kode1);
             $("#nama").val(nama1);
@@ -347,7 +338,7 @@
 
             var harga = parseFloat($("#harga").val()).toFixed(2);
             var jumlah = parseFloat($("#jumlah").val()).toFixed(2);
-            var diskon = parseFloat($("#diskon").val()).toFixed(2);
+            var diskon = 0;
             var totalnya = parseFloat(((100 - diskon) / 100) * jumlah * harga).toFixed(2);
             $("#total").val(totalnya);
 
@@ -406,7 +397,7 @@
                 var nama = $('td', this).eq(1).text();
                 var satuan = $('td', this).eq(2).text();
                 var harga = $('td', this).eq(3).text();
-                var diskon = $('td', this).eq(4).text();
+                var diskon =0;
                 var jumlah = $('td', this).eq(5).text();
 
                 if (kode != "") {
@@ -427,7 +418,9 @@
             });
 
 
+           setTimeout(() => {
             window.location = "http://127.0.0.1:8000/pembelian";
+           }, 1500);
         }
 
     </script>

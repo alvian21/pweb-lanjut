@@ -45,7 +45,13 @@
                 <th>Aksi</th>
 
             </tr>
+            @php
+            $total = 0;
+            @endphp
             @foreach ($penjualan as $item)
+            @php
+            $total += $item->grandtotal;
+             @endphp
             <tr>
                 <td>{{$item->trj}}</td>
                 <td>{{$item->tanggal}}</td>
@@ -60,6 +66,10 @@
                 </td>
             </tr>
             @endforeach
+            <tr>
+                <td colspan="5" class="text-center">Total</td>
+                <td>{{$total}}</td>
+            </tr>
         </table>
     </div>
 <script>
